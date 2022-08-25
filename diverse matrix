@@ -1,0 +1,77 @@
+#include <bits/stdc++.h>
+#define ll long long
+#define ull unsigned long long
+#define  FOR(i,n) for(long long i = 0; i < (n); i++)
+#define pb push_back
+#define w(x) 	ll x; cin>>x; while(x--)
+
+#define max2(a,b) ((a<b)?b:a)
+#define max3(a,b,c) max2(max2(a,b),c)
+#define min2(a,b) ((a>b)?b:a)
+#define min3(a,b,c) min2(min2(a,b),c)
+
+#define loop(i,n) for(long long i=1;i<=n;i++)
+
+using namespace std;
+int mod=1e9+9;
+
+int SetBit (int n, int X) { return n | (1 << X); }
+int ClearBit (int n, int X) { return n & ~(1 << X); }
+int ToggleBit (int n, int X) { return n ^ (1 << X); }
+bool CheckBit (int n, int X) { return (bool)(n & (1 << X)); }
+
+
+void pa(int arr[], int size)
+{
+   for (int i = 0; i < size; i++)
+   cout << arr[i] << " ";
+   cout << endl;
+}
+
+unsigned kk(unsigned int number){
+  return (int)log2(number)+1;
+}
+
+
+
+double log_a_to_base_b(int a, int b)
+{
+    return log2(a) / log2(b);
+}
+
+
+int main(){
+	ios::sync_with_stdio(0);
+	cin.tie(0);
+
+	int n,m;
+	cin>>n>>m;
+	if(n==1  &&  m==1){
+		cout<<0<<endl;
+	}
+	else{
+		if(m>=n){
+			for(int i=1;i<=n;++i){
+				for(int j=1;j<=m;++j){
+					cout<<(n+j)*i<<" ";
+				}
+				cout<<endl;
+			}
+		}
+		else{
+			for(int i=1;i<=n;++i){
+				for(int j=1;j<=m;++j){
+					cout<<(m+i)*j<<" ";
+				}
+				cout<<endl;
+			}
+		}
+	}
+
+	
+	return 0;
+}
+
+
+
+
