@@ -1,0 +1,161 @@
+#include <bits/stdc++.h>
+#define ll long long
+#define ull unsigned long long
+#define  FOR(i,n) for(long long i = 0; i < (n); i++)
+#define pb push_back
+#define w(x) 	ll x; cin>>x; while(x--)
+
+#define max2(a,b) ((a<b)?b:a)
+#define max3(a,b,c) max2(max2(a,b),c)
+#define min2(a,b) ((a>b)?b:a)
+#define min3(a,b,c) min2(min2(a,b),c)
+
+#define loop(i,n) for(long long i=1;i<=n;i++)
+
+using namespace std;
+int mod=1e9+9;
+
+int SetBit (int n, int X) { return n | (1 << X); }
+int ClearBit (int n, int X) { return n & ~(1 << X); }
+int ToggleBit (int n, int X) { return n ^ (1 << X); }
+bool CheckBit (int n, int X) { return (bool)(n & (1 << X)); }
+
+
+void pa(int arr[], int size)
+{
+   for (int i = 0; i < size; i++)
+   cout << arr[i] << " ";
+   cout << endl;
+}
+
+unsigned kk(unsigned int number){
+  return (int)log2(number)+1;
+}
+
+
+bool isPowerOfTwo(int n)
+{
+   if(n==0)
+   return false;
+ 
+   return (ceil(log2(n)) == floor(log2(n)));
+}
+
+
+void countFreq(int arr[], int n)
+{
+    // Mark all array elements as not visited
+    vector<bool> visited(n, false);
+ 
+    // Traverse through array elements and
+    // count frequencies
+    for (int i = 0; i < n; i++) {
+ 
+        // Skip this element if already processed
+        if (visited[i] == true)
+            continue;
+ 
+        // Count frequency
+        int count = 1;
+        for (int j = i + 1; j < n; j++) {
+            if (arr[i] == arr[j]) {
+                visited[j] = true;
+                count++;
+            }
+        }
+        cout << arr[i] << " " << count << endl;
+    }
+}
+
+int main(){
+	ios::sync_with_stdio(0);
+	cin.tie(0);
+
+    ll n;
+    cin>>n;
+    if(n==1){
+        cout<<1<<" "<<0<<endl;
+    }else{
+    ll m;
+    vector<ll> v;
+
+    while (n%2 == 0) 
+    { 
+        v.pb(2);
+        n = n/2; 
+    } 
+     
+    // n must be odd at this point.  So we can skip  
+    // one element (Note i = i +2) 
+    for (int i = 3; i <= sqrt(n); i = i+2) 
+    { 
+        // While i divides n, print i and divide n 
+        while (n%i == 0) 
+        { 
+           v.pb(i);
+            n = n/i; 
+        } 
+    } 
+     
+    // This condition is to handle the case when n  
+    // is a prime number greater than 2 
+    if (n > 2) 
+        v.pb(n);
+
+    ll ans=v[0];
+    // v.pb(-1);
+    for(int i=1;i<v.size();i++){
+        if(v[i]!=v[i-1]){
+            ans*=v[i];
+        }
+    }
+
+    m=v.size(); vector<int> a;
+    // Mark all array elements as not visited
+    vector<bool> visited(m, false);
+ 
+    // Traverse through array elements and
+    // count frequencies
+    for (int i = 0; i < m; i++) {
+ 
+        // Skip this element if already processed
+        if (visited[i] == true)
+            continue;
+ 
+        // Count frequency
+        int count = 1;
+        for (int j = i + 1; j < m; j++) {
+            if (v[i] == v[j]) {
+                visited[j] = true;
+                count++;
+            }
+        }
+        a.pb(count);
+        // cout << v[i] << " " << count << endl;
+    }
+    
+    ll ans2;
+	ll max=*max_element(a.begin(), a.end()); int k=0;
+    for(int i=1;i<a.size();i++){
+        if(a[i]==a[i-1]) k++;
+    }
+    if(isPowerOfTwo(max)){
+        if(k==a.size()-1){
+            ans2=log2(max);
+        }
+        else{
+            ans2=log2(max)+1;
+        }
+    }
+    else{
+        ans2=log2(max)+2;
+    }
+    
+    cout<<ans<<" "<<ans2<<endl;}
+
+	
+	return 0;
+}
+
+
+ 
