@@ -1,0 +1,69 @@
+#include <bits/stdc++.h>
+#define ll long long
+#define ull unsigned long long
+#define  FOR(i,n) for(long long i = 0; i < (n); i++)
+#define  FOR1(i,n) for(long long i = 1; i <= (n); i++)
+#define pb push_back
+#define w(x) 	ll x; cin>>x; while(x--)
+
+#define max2(a,b) ((a<b)?b:a)
+#define max3(a,b,c) max2(max2(a,b),c)
+#define min2(a,b) ((a>b)?b:a)
+#define min3(a,b,c) min2(min2(a,b),c)
+
+#define loop(i,n) for(long long i=1;i<=n;i++)
+
+using namespace std;
+int mod=1e9+9;
+
+int SetBit (int n, int X) { return n | (1 << X); }
+int ClearBit (int n, int X) { return n & ~(1 << X); }
+int ToggleBit (int n, int X) { return n ^ (1 << X); }
+bool CheckBit (int n, int X) { return (bool)(n & (1 << X)); }
+
+
+void pa(int arr[], int size)
+{
+   for (int i = 0; i < size; i++)
+   cout << arr[i] << " ";
+   cout << endl;
+}
+
+unsigned kk(unsigned int number){
+  return (int)log2(number)+1;
+}
+
+int p[100007],r[100007];
+int main(){
+	ios::sync_with_stdio(0);
+	cin.tie(0);
+    
+	int n;
+	cin>>n;
+	int a[n];
+	FOR1(i,n){
+		cin>>p[i]>>r[i];
+		a[i]=1;
+	}
+
+	FOR1(i,n){
+		if(r[i]==0){
+			a[i]=0;
+			a[p[i]]=0;
+		}
+	}
+    int cnt=1;
+	FOR1(i,n){
+		if(a[i]==1){
+			cout<<i<<" ";
+			cnt=0;
+		}
+	}
+	cout<<endl;
+	if(cnt){
+		cout<<-1<<endl;
+	}
+
+   	return 0;
+}
+
